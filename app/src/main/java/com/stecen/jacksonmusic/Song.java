@@ -52,18 +52,15 @@ public class Song {
         return this.timeMillis;
     }
 
-    // Assumes no hour-long music
+    // Assumes no hour-long-plus music
     public String getTimeStr() {
-        StringBuilder timeSb = new StringBuilder();
+        String minute = Long.toString(TimeUnit.MILLISECONDS.toMinutes(this.timeMillis));
 
-        long minute = TimeUnit.MILLISECONDS.toMinutes(this.timeMillis);
-        timeSb.append(Long.toString(minute)).append(":");
-
-        long second = TimeUnit.MILLISECONDS.toSeconds(this.timeMillis)
+        long secondLong = TimeUnit.MILLISECONDS.toSeconds(this.timeMillis)
                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(this.timeMillis));
-        timeSb.append(Long.toString(second));
+        String second = ((secondLong >= 10) ? "" : "0") + Long.toString(secondLong);
 
-        return timeSb.toString();
+        return minute + ":" + second;
     }
 
     public static void getSongData(MusicJSONAsyncInterface callback) {

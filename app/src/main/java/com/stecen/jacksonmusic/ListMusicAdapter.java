@@ -29,7 +29,6 @@ public class ListMusicAdapter extends ArrayAdapter<Song> /*implements AdapterVie
         super(context, 0, songs);
         this.context = context;
         this.songs = songs;
-        Log.d(TAG, "constructor");
     }
 
     static class ViewCache {

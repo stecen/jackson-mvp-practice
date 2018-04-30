@@ -11,12 +11,15 @@ import java.util.List;
 public class MusicListActivity extends AppCompatActivity implements MusicJSONAsyncInterface {
     ListViewCompat musicList;
 
+    //todo package and comments
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_list);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(R.string.app_str);
         toolbar.setTitleTextAppearance(this, R.style.JacksonText);
         setSupportActionBar(toolbar);
 

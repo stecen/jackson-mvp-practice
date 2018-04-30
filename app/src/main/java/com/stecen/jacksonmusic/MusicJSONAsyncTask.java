@@ -22,7 +22,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
     private static final String MUSIC_QUERY = "https://itunes.apple.com/search?term=Michael+jackson";
-//    private static final String MUSIC_QUERY = "https://glosbe.com/gapi/translate?from=eng&dest=zho&format=json&pretty=true&phrase=";
     private static final int TIMEOUT = 15000;
 
     private static final String RESULTS_KEY = "results";
@@ -43,11 +42,6 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
 
     public MusicJSONAsyncTask(MusicJSONAsyncInterface callback) {
         this.callback = callback;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
     }
 
     @Override
@@ -84,10 +78,8 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
                 }
             }
 
-        } catch (IOException e) {
-            Log.e("IOException", e.toString());
-        } catch (JSONException e) {
-            Log.e("JSONException", e.toString());
+        } catch (IOException | JSONException e) {
+            Log.e(TAG, e.toString());
         } finally {
             if (reader != null) {
                 try {

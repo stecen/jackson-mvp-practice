@@ -3,7 +3,9 @@ package com.stecen.jacksonmusic;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,10 +26,14 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        toolbar.setTitle("THE JACKSON");
-//        setSupportActionBar(toolbar);
-        // todo: toolbar
+
+        Toolbar toolbar = findViewById(R.id.details_toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         Intent infoIntent = getIntent();
         if (infoIntent != null) {
@@ -47,7 +53,6 @@ public class DetailsActivity extends AppCompatActivity {
             GetImageAsyncTask imageAsyncTask = new GetImageAsyncTask(infoIntent.getStringExtra(IMG_KEY), new ImageAsyncInterface() {
                 @Override
                 public void processImage(Bitmap bitmap) {
-                    Log.e("img", "setting image?");
                     image.setImageBitmap(bitmap);
                 }
             });
