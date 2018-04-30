@@ -13,8 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -93,6 +91,7 @@ public class ListMusicAdapter extends ArrayAdapter<Song> /*implements AdapterVie
                 intent.putExtra(DetailsActivity.GENRE_KEY, currSong.getGenreStr());
                 intent.putExtra(DetailsActivity.DATE_KEY, currSong.getYearStr());
                 intent.putExtra(DetailsActivity.IMG_KEY, currSong.getUrlStr());
+                intent.putExtra(DetailsActivity.TIME_KEY, currSong.getTimeStr());
                 // todo: image parceabble -- not just url is good
 
                 context.startActivity(intent);
@@ -114,39 +113,39 @@ public class ListMusicAdapter extends ArrayAdapter<Song> /*implements AdapterVie
         return convertView;
     }
 
-    @Override
-    public void add(@Nullable Song object) {
-        super.add(object);
-    }
-
-    @Override
-    public void addAll(@NonNull Collection<? extends Song> collection) {
-        super.addAll(collection);
-    }
-
-    @Override
-    public void addAll(Song... items) {
-        super.addAll(items);
-    }
-
-    @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-    }
-
-    @Nullable
-    @Override
-    public Song getItem(int position) {
-        return super.getItem(position);
-    }
-
-    @Override
-    public int getPosition(@Nullable Song item) {
-        return super.getPosition(item);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return super.getItemId(position);
-    }
+//    @Override
+//    public void add(@Nullable Song object) {
+//        super.add(object);
+//    }
+//
+//    @Override
+//    public void addAll(@NonNull Collection<? extends Song> collection) {
+//        super.addAll(collection);
+//    }
+//
+//    @Override
+//    public void addAll(Song... items) {
+//        super.addAll(items);
+//    }
+//
+//    @Override
+//    public void notifyDataSetChanged() {
+//        super.notifyDataSetChanged();
+//    }
+//
+//    @Nullable
+//    @Override
+//    public Song getItem(int position) {
+//        return super.getItem(position);
+//    }
+//
+//    @Override
+//    public int getPosition(@Nullable Song item) {
+//        return super.getPosition(item);
+//    }
+//
+//    @Override
+//    public long getItemId(int position) {
+//        return super.getItemId(position);
+//    }
 }

@@ -33,8 +33,11 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
     private static final String URL60_KEY = "artworkUrl60";
     private static final String URL100_KEY = "artworkUrl100";
     private static final String GENRE_KEY = "primaryGenreName";
+    private static final String TIME_KEY = "trackTimeMillis";
 
     private static final String NOT_FOUND = "---";
+
+    private static final String TAG = "musicAsync";
 
     MusicJSONAsyncInterface callback;
 
@@ -90,7 +93,7 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    Log.e("Reader", e.toString());
+                    Log.e(TAG, e.toString());
                 }
             }
         }
@@ -112,6 +115,7 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
                     dateStr = NOT_FOUND,
                     urlStr = NOT_FOUND,
                     genreStr = NOT_FOUND;
+            int timeMillis = 0;
             if (isValidKey(songObj, TRACK_KEY)) {
                 trackStr = songObj.getString(TRACK_KEY);
             }
@@ -127,8 +131,11 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
             if (isValidKey(songObj, GENRE_KEY)) {
                 genreStr = songObj.getString(GENRE_KEY);
             }
+            if (isValidKey(songObj, TIME_KEY)) {
+                timeMillis = Integer.valueOf(songObj.getString(TIME_KEY));
+            }
 
-            songsList.add(new Song(trackStr, collectionStr, dateStr, urlStr, genreStr));
+            songsList.add(new Song(trackStr, collectionStr, dateStr, urlStr, genreStr, timeMillis));
         }
 
         return songsList;
@@ -142,7 +149,6 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
     @Override
     protected void onPostExecute(List<Song> songsList) {
         super.onPostExecute(songsList);
-        Log.e("size1",""+ songsList.size());
         callback.processMusic(songsList);
 
     }

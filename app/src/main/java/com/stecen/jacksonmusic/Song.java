@@ -1,7 +1,6 @@
 package com.stecen.jacksonmusic;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by stevecen on 4/27/18.
@@ -9,14 +8,16 @@ import java.util.List;
 
 public class Song {
     private String trackStr, collectionStr, dateStr, urlStr, genreStr;
+    private int timeMillis;
     // genre?
 
-    public Song(String trackName, String collectionName, String dateStr, String urlStr, String genreStr) {
+    public Song(String trackName, String collectionName, String dateStr, String urlStr, String genreStr, int timeMillis) {
         this.trackStr = trackName;
         this.collectionStr = collectionName;
         this.dateStr = dateStr;
         this.urlStr = urlStr;
         this.genreStr = genreStr;
+        this.timeMillis = timeMillis;
     }
 
     public String getTrackStr() {
@@ -45,6 +46,24 @@ public class Song {
 
     public String getGenreStr() {
         return this.genreStr;
+    }
+
+    public int getTimeMillis() {
+        return this.timeMillis;
+    }
+
+    // Assumes no hour-long music
+    public String getTimeStr() {
+        StringBuilder timeSb = new StringBuilder();
+
+        long minute = TimeUnit.MILLISECONDS.toMinutes(this.timeMillis);
+        timeSb.append(Long.toString(minute)).append(":");
+
+        long second = TimeUnit.MILLISECONDS.toSeconds(this.timeMillis)
+                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(this.timeMillis));
+        timeSb.append(Long.toString(second));
+
+        return timeSb.toString();
     }
 
     public static void getSongData(MusicJSONAsyncInterface callback) {

@@ -37,6 +37,7 @@ public class GetImageAsyncTask extends AsyncTask<Void, Integer, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
+        int height = bitmap.getHeight();
         callback.processImage(bitmap);
     }
 }
