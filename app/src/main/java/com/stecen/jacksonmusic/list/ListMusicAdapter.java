@@ -60,15 +60,15 @@ public class ListMusicAdapter extends ArrayAdapter<Song> {
         viewCache.songRelative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailsActivity.class);
-                intent.putExtra(DetailsActivity.TRACK_KEY, currSong.getTrackStr());
-                intent.putExtra(DetailsActivity.COLLECTION_KEY, currSong.getCollectionStr());
-                intent.putExtra(DetailsActivity.GENRE_KEY, currSong.getGenreStr());
-                intent.putExtra(DetailsActivity.DATE_KEY, currSong.getYearStr());
-                intent.putExtra(DetailsActivity.IMG_KEY, currSong.getUrlStr());
-                intent.putExtra(DetailsActivity.TIME_KEY, currSong.getTimeStr());
+                Intent detailsIntent = new Intent(context, DetailsActivity.class);
+                detailsIntent.putExtra(DetailsActivity.TRACK_KEY, currSong.getTrackStr());
+                detailsIntent.putExtra(DetailsActivity.COLLECTION_KEY, currSong.getCollectionStr());
+                detailsIntent.putExtra(DetailsActivity.GENRE_KEY, currSong.getGenreStr());
+                detailsIntent.putExtra(DetailsActivity.DATE_KEY, currSong.getYearStr());
+                detailsIntent.putExtra(DetailsActivity.IMG_KEY, currSong.getUrlStr());
+                detailsIntent.putExtra(DetailsActivity.TIME_KEY, currSong.getTimeStr());
 
-                context.startActivity(intent);
+                context.startActivity(detailsIntent);
             }
         });
 
@@ -79,6 +79,7 @@ public class ListMusicAdapter extends ArrayAdapter<Song> {
             }
         });
         imageAsyncTask.execute();
+
         return convertView;
     }
 }
