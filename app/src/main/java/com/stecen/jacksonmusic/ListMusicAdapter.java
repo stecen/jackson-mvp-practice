@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -27,26 +26,6 @@ public class ListMusicAdapter extends ArrayAdapter<Song> /*implements AdapterVie
     private List<Song> songs;
 
     private final static String TAG = "adapter";
-
-    class MusicOnClick implements RelativeLayout.OnClickListener {
-        private Song song;
-        public MusicOnClick(Song song) {
-            this.song = song;
-        }
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra(DetailsActivity.TRACK_KEY, song.getTrackStr());
-            intent.putExtra(DetailsActivity.COLLECTION_KEY, song.getCollectionStr());
-            intent.putExtra(DetailsActivity.GENRE_KEY, song.getGenreStr());
-            intent.putExtra(DetailsActivity.DATE_KEY, song.getDateStr());
-            // todo: image parceabble -- not just url is good
-
-            // todo 
-
-            context.startActivity(intent);
-        }
-    }
 
     public ListMusicAdapter(@NonNull Context context, @NonNull List<Song> songs) {
         super(context, 0, songs);
@@ -112,7 +91,8 @@ public class ListMusicAdapter extends ArrayAdapter<Song> /*implements AdapterVie
                 intent.putExtra(DetailsActivity.TRACK_KEY, currSong.getTrackStr());
                 intent.putExtra(DetailsActivity.COLLECTION_KEY, currSong.getCollectionStr());
                 intent.putExtra(DetailsActivity.GENRE_KEY, currSong.getGenreStr());
-                intent.putExtra(DetailsActivity.DATE_KEY, currSong.getDateStr());
+                intent.putExtra(DetailsActivity.DATE_KEY, currSong.getYearStr());
+                intent.putExtra(DetailsActivity.IMG_KEY, currSong.getUrlStr());
                 // todo: image parceabble -- not just url is good
 
                 context.startActivity(intent);
@@ -123,8 +103,8 @@ public class ListMusicAdapter extends ArrayAdapter<Song> /*implements AdapterVie
             @Override
             public void processImage(Bitmap bitmap) {
                 viewCache.songImage.setImageBitmap(bitmap);
-                viewCache.songImage.setScaleX(1.5f);
-                viewCache.songImage.setScaleY(1.5f);
+//                viewCache.songImage.setScaleX(1.5f);
+//                viewCache.songImage.setScaleY(1.5f);
             }
         });
         imageAsyncTask.execute();

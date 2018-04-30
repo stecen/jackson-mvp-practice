@@ -18,7 +18,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="JacksonText">
-        <item name="android:fontFamily">@font/</item>
+        <item name="android:fontFamily">@font/cinzel_font</item>
     </style>
 
 </resources>

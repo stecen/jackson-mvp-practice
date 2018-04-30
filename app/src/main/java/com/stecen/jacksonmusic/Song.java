@@ -31,6 +31,14 @@ public class Song {
         return this.dateStr;
     }
 
+    public String getYearStr() {
+        if (this.dateStr.length() >= 4) {
+            return this.dateStr.substring(0, 4);
+        } else {
+            return this.dateStr;
+        }
+    }
+
     public String getUrlStr() {
         return this.urlStr;
     }

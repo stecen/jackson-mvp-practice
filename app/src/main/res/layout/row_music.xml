@@ -3,40 +3,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
-    android:id="@+id/song_relative">
+    android:id="@+id/song_relative"
+
+    android:background="@color/listBackground">
 
     <ImageView
         android:id="@+id/song_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
 
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
 
         android:focusable="false"
         android:focusableInTouchMode="false"/>
+
     <TextView
         android:id="@+id/track_text"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
 
         android:layout_toRightOf="@id/song_img"
 
         android:text="TRACK NAME"
 
+        android:textColor="@color/textWhite"
+        android:fontFamily="sans-serif-light"
+        android:textSize="16sp"
+
         android:focusable="false"
         android:focusableInTouchMode="false"/>
+
     <TextView
         android:id="@+id/collection_text"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
 
         android:layout_toRightOf="@id/song_img"
         android:layout_below="@id/track_text"
 
         android:text="ALBUM NAME"
+
+        android:textColor="@color/textWhite"
+        android:fontFamily="sans-serif-light"
+        android:textSize="12dp"
 
         android:focusable="false"
         android:focusableInTouchMode="false"/>

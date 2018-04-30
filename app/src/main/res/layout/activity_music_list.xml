@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="com.stecen.jacksonmusic.MusicListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+
+        android:layout_marginBottom="8dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,22 +24,16 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--<include layout="@layout/content_music_list" />-->
-
     <android.support.v7.widget.ListViewCompat
         android:id="@+id/music_list"
-        android:layout_below="@id/app_bar_layout"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+
+        android:layout_below="@id/app_bar_layout"
+
+        android:divider="@android:color/transparent"
+        android:dividerHeight="4dp">
 
     </android.support.v7.widget.ListViewCompat>
-
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
-
 </RelativeLayout>

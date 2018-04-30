@@ -24,6 +24,7 @@ public class MusicListActivity extends AppCompatActivity implements MusicJSONAsy
         setContentView(R.layout.activity_music_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
+        toolbar.setTitleTextAppearance(this, R.style.JacksonText);
         setSupportActionBar(toolbar);
 
         musicList = (ListViewCompat) findViewById(R.id.music_list);
@@ -54,12 +55,12 @@ public class MusicListActivity extends AppCompatActivity implements MusicJSONAsy
         Log.e("size", Integer.toString(songList.size()));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_music_list, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_music_list, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
