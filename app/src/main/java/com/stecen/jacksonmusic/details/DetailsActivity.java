@@ -1,4 +1,4 @@
-package com.stecen.jacksonmusic;
+package com.stecen.jacksonmusic.details;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by stevecen on 4/28/18.
- */
+import com.stecen.jacksonmusic.R;
+import com.stecen.jacksonmusic.web.GetImageAsyncTask;
 
 public class DetailsActivity extends AppCompatActivity {
     public static final String TRACK_KEY = "TRACK";
@@ -50,7 +48,7 @@ public class DetailsActivity extends AppCompatActivity {
             genreText.setText(infoIntent.getStringExtra(GENRE_KEY));
             dateText.setText(infoIntent.getStringExtra(DATE_KEY));
 
-            GetImageAsyncTask imageAsyncTask = new GetImageAsyncTask(infoIntent.getStringExtra(IMG_KEY), new ImageAsyncInterface() {
+            GetImageAsyncTask imageAsyncTask = new GetImageAsyncTask(infoIntent.getStringExtra(IMG_KEY), new GetImageAsyncTask.ImageAsyncInterface() {
                 @Override
                 public void processImage(Bitmap bitmap) {
                     image.setImageBitmap(bitmap);
@@ -58,7 +56,5 @@ public class DetailsActivity extends AppCompatActivity {
             });
             imageAsyncTask.execute();
         }
-
-
     }
 }

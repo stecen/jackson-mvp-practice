@@ -1,4 +1,4 @@
-package com.stecen.jacksonmusic;
+package com.stecen.jacksonmusic.list;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,12 +6,14 @@ import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.stecen.jacksonmusic.R;
+import com.stecen.jacksonmusic.data.Song;
+import com.stecen.jacksonmusic.web.MusicJSONAsyncTask;
+
 import java.util.List;
 
-public class MusicListActivity extends AppCompatActivity implements MusicJSONAsyncInterface {
+public class MusicListActivity extends AppCompatActivity implements MusicJSONAsyncTask.MusicJSONAsyncInterface {
     ListViewCompat musicList;
-
-    //todo package and comments
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,15 +1,12 @@
-package com.stecen.jacksonmusic;
+package com.stecen.jacksonmusic.data;
+
+import com.stecen.jacksonmusic.web.MusicJSONAsyncTask;
 
 import java.util.concurrent.TimeUnit;
-
-/**
- * Created by stevecen on 4/27/18.
- */
 
 public class Song {
     private String trackStr, collectionStr, dateStr, urlStr, genreStr;
     private int timeMillis;
-    // genre?
 
     public Song(String trackName, String collectionName, String dateStr, String urlStr, String genreStr, int timeMillis) {
         this.trackStr = trackName;
@@ -63,7 +60,7 @@ public class Song {
         return minute + ":" + second;
     }
 
-    public static void getSongData(MusicJSONAsyncInterface callback) {
+    public static void getSongData(MusicJSONAsyncTask.MusicJSONAsyncInterface callback) {
         MusicJSONAsyncTask musicAsync = new MusicJSONAsyncTask(callback);
         musicAsync.execute();
     }

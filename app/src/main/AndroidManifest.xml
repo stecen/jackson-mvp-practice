@@ -9,11 +9,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_jackson_icon"
         android:label="@string/app_str"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MusicListActivity"
+            android:name=".list.MusicListActivity"
             android:label="@string/app_str"
             android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTop">
@@ -25,12 +24,12 @@
         </activity>
 
         <activity
-            android:name=".DetailsActivity"
+            android:name=".details.DetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MusicListActivity">
+            android:parentActivityName=".list.MusicListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MusicListActivity"/>
+                android:value=".list.MusicListActivity"/>
         </activity>
     </application>
 

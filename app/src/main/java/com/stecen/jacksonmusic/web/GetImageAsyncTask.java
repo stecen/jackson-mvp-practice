@@ -1,4 +1,4 @@
-package com.stecen.jacksonmusic;
+package com.stecen.jacksonmusic.web;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,10 +7,6 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-/**
- * Created by stevecen on 4/28/18.
- */
 
 public class GetImageAsyncTask extends AsyncTask<Void, Integer, Bitmap> {
     private ImageAsyncInterface callback;
@@ -38,5 +34,9 @@ public class GetImageAsyncTask extends AsyncTask<Void, Integer, Bitmap> {
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
         callback.processImage(bitmap);
+    }
+
+    public interface ImageAsyncInterface {
+        void processImage(Bitmap bitmap);
     }
 }

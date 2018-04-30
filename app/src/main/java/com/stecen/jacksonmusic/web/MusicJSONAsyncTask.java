@@ -1,7 +1,9 @@
-package com.stecen.jacksonmusic;
+package com.stecen.jacksonmusic.web;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.stecen.jacksonmusic.data.Song;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,10 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
-
-/**
- * Created by stevecen on 4/27/18.
- */
 
 public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
     private static final String MUSIC_QUERY = "https://itunes.apple.com/search?term=Michael+jackson";
@@ -74,7 +72,7 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
                 if(isValidKey(resObj, RESULTS_KEY) ) {
                     JSONArray resultsArr = resObj.getJSONArray(RESULTS_KEY);
 
-                     songsList = getSongsFromJson(resultsArr); // to let the finally block run
+                     songsList = getSongsFromJson(resultsArr);
                 }
             }
 
@@ -143,5 +141,9 @@ public class MusicJSONAsyncTask extends AsyncTask<Void, Integer, List<Song>> {
         super.onPostExecute(songsList);
         callback.processMusic(songsList);
 
+    }
+
+    public interface MusicJSONAsyncInterface {
+        void processMusic(List<Song> songList);
     }
 }
